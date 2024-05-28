@@ -22,3 +22,10 @@
   color: skyblue;
   margin: 20px;
 }
+
+.input-error{
+  position:absolute;
+  padding: 8px;
+  color: red;
+  font-size: 13px;
+}
