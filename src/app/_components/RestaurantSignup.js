@@ -9,10 +9,26 @@ const restaurantSignup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-
+  const [error, setError] = useState(false)
+  const [passworderror, setPassworderror] = useState(false)
   const router = useRouter()
 
   const handleSignup = async () => {
+    
+    if(password!==repassword){
+      setPassworderror(true)
+      return false
+    } else {
+      setPassworderror(false)
+    }
+
+    if(!restaurantname || !phonenumber || !city || !address || !email || !password || !repassword){
+      setError(true)
+      return false 
+    }else {
+      setError(false)
+    }
+
     console.log(
       restaurantname,
       phonenumber,
@@ -56,6 +72,9 @@ const restaurantSignup = () => {
           value={restaurantname}
           onChange={(e) => setRestaurantname(e.target.value)}
         />
+        {
+          error && !restaurantname && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -65,6 +84,9 @@ const restaurantSignup = () => {
           value={phonenumber}
           onChange={(e) => setPhonenumber(e.target.value)}
         />
+        {
+          error && !phonenumber && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -74,6 +96,9 @@ const restaurantSignup = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
+        {
+          error && !city && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -83,6 +108,9 @@ const restaurantSignup = () => {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
+        {
+          error && !address && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -92,6 +120,9 @@ const restaurantSignup = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {
+          error && !email && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -101,6 +132,12 @@ const restaurantSignup = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {
+          passworderror && <span className="input-error">Password and Confirm password not matched</span>
+        }
+        {
+          error && !password && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <input
@@ -110,6 +147,12 @@ const restaurantSignup = () => {
           value={repassword}
           onChange={(e) => setRepassword(e.target.value)}
         />
+         {
+          passworderror && <span className="input-error">Password and Confirm password not matched</span>
+        }
+        {
+          error && !repassword && <span className="input-error">Please enter all fields</span>
+        }
       </div>
       <div className="input-container">
         <button className="button" onClick={handleSignup}>
