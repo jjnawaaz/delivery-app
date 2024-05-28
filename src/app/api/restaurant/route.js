@@ -12,11 +12,25 @@ export async function GET() {
 
 export async function POST(req) {
   let data = await req.json();
-  console.log(data);
   await mongoose.connect(connectionStr, { useNewUrlParser: true });
-  const restaurant = new restaurantSchema(data);
-  console.log(restaurant);
-  const result = await restaurant.save();
-  console.log(result);
-  return NextResponse.json({ result, success: true });
+  let result;
+  let success = false;
+  if (data.login) {
+    result = await restaurantSchema.findOne({
+      email: data.email,
+      password: data.password,
+    });
+    if (result) {
+      success = true;
+      console.log("data fetched succesfully");
+    }
+  } else {
+    const restaurant = new restaurantSchema(data);
+    result = await restaurant.save();
+    if (result) {
+      success = true;
+    }
+  }
+
+  return NextResponse.json({ result, success });
 }
