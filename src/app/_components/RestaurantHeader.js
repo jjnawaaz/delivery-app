@@ -40,10 +40,8 @@ const RestaurantHeader = () => {
         </li>
         {details && details.restaurantname ? (
           <li>
-            <>
-              <button onClick={logout}>LogOut</button>
-              <Link href="/">Profile</Link>
-            </>
+            <button onClick={logout}>LogOut</button>
+            <Link href="/">Profile</Link>
           </li>
         ) : (
           <li>
