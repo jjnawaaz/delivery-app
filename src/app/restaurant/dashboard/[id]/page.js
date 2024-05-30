@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const EditFoodItem = (props) => {
   const [name, setName] = useState("");
@@ -9,6 +9,25 @@ const EditFoodItem = (props) => {
   const [description, setDescription] = useState("");
   const [error, setError] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    handleLoadFoodItem();
+  }, []);
+
+  const handleLoadFoodItem = async () => {
+    console.log(props);
+    let response = await fetch(
+      "http://localhost:3000/api/restaurant/foods/edit/" + props.params.id
+    );
+    response = await response.json();
+    if (response.success) {
+      setName(response.result.name);
+      setPrice(response.result.price);
+      setPath(response.result.img_path);
+      setDescription(response.result.description);
+    }
+  };
+
   const handleEditFoodItem = async () => {
     console.log(name, price, path, description);
     if (!name || !price || !path || !description) {
@@ -16,6 +35,20 @@ const EditFoodItem = (props) => {
       return false;
     } else {
       setError(false);
+    }
+
+    let response = await fetch(
+      "http://localhost:3000/api/restaurant/foods/edit/" + props.params.id,
+      {
+        method: "PUT",
+        body: JSON.stringify({ name, price, img_path: path, description }),
+      }
+    );
+    response = await response.json();
+    if (response.success) {
+      router.push("../dashboard");
+    } else {
+      alert("Data is not updated");
     }
   };
 

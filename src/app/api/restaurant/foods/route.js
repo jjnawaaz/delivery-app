@@ -3,6 +3,17 @@ import { foodSchema } from "@/app/lib/foodsModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
+export async function GET(req, res) {
+  const id = res.params.id;
+  let success = true;
+  await mongoose.connect(connectionStr, { useNewUrlParser: true });
+  const result = await foodSchema.findOne({ _id: id });
+  if (result) {
+    success = true;
+  }
+  return NextResponse.json({ result, success });
+}
+
 export async function POST(request) {
   const payload = await request.json();
   let success = false;

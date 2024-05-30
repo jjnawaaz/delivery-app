@@ -25,7 +25,7 @@ const RestaurantHeader = () => {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("restaurantUser");
+    localStorage.removeItem("restaurentUser");
     router.push("/restaurant");
   };
 

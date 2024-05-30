@@ -13,3 +13,16 @@ export async function GET(req, res) {
   }
   return NextResponse.json({ result, success });
 }
+
+export async function PUT(req, res) {
+  const id = res.params.id;
+  const data = await req.json();
+  let success = false;
+  await mongoose.connect(connectionStr, { useNewUrlParser: true });
+  const result = await foodSchema.findOneAndUpdate({ _id: id }, data);
+  if (result) {
+    success = true;
+  }
+
+  return NextResponse.json({ result, success });
+}

@@ -1,3 +1,42 @@
+*:focus {
+  outline: none;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-wrapper ul {
+  display: flex;
+}
+
+.header-wrapper ul li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.header-wrapper ul li a {
+  text-decoration: none;
+}
+
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  background-color: white;
+}
+
+.header-wrapper ul li button {
+  background-color: transparent;
+  border: none;
+  color: skyblue;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .input-container {
   margin: 10px;
 }
@@ -23,22 +62,76 @@
   margin: 20px;
 }
 
-.input-error{
-  position:absolute;
+.input-error {
+  position: absolute;
   padding: 8px;
   color: red;
   font-size: 13px;
 }
 
-table,th,td{
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 10px
+  padding: 10px;
 }
 
-table td button{
-  margin: 5px
+table td button {
+  margin: 5px;
 }
-table img{
-  width: 80px
+table img {
+  width: 80px;
+}
+.main-page-banner {
+  background-image: url("https://www.shutterstock.com/shutterstock/photos/1125066479/display_1500/stock-photo-various-of-asian-meals-on-rustic-background-top-view-place-for-text-asian-food-concept-1125066479.jpg");
+  background-color: rgb(0, 0, 0, 0.2);
+  background-size: cover;
+  background-blend-mode: multiply;
+  padding: 30px;
+  height: 230px;
+  color: white;
+  text-align: center;
+}
+
+.input-wrapper {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: auto;
+  width: 60%;
+}
+
+.select-input {
+  height: 40px;
+  border: none;
+  width: 20%;
+  padding-left: 15px;
+}
+.select-search {
+  height: 40px;
+  border: none;
+  width: 45%;
+  border-left: 1px solid #ccc;
+  padding-left: 15px;
+}
+
+.location-list {
+  color: black;
+  list-style-type: none;
+  text-align: left;
+  position: absolute;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  margin-left: -5px;
+  border: 1px solid #ccc;
+}
+
+.location-list li {
+  width: 180px;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
 }

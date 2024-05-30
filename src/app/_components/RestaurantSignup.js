@@ -62,7 +62,7 @@ const restaurantSignup = () => {
     if (response.success) {
       const { result } = response;
       delete result.password;
-      localStorage.setItem("restaurantUser", JSON.stringify(result));
+      localStorage.setItem("restaurentUser", JSON.stringify(result));
       router.push("/restaurant/dashboard");
     }
   };

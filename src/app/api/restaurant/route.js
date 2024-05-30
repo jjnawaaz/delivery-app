@@ -22,7 +22,7 @@ export async function POST(req) {
     });
     if (result) {
       success = true;
-      console.log("data fetched succesfully");
+      console.log("data fetched successfully");
     }
   } else {
     const restaurant = new restaurantSchema(data);
