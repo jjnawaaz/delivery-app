@@ -83,7 +83,8 @@ table td button {
 table img {
   width: 80px;
 }
-.main-page-banner {
+.main-page-banner,
+.restaurant-page-banner {
   background-image: url("https://www.shutterstock.com/shutterstock/photos/1125066479/display_1500/stock-photo-various-of-asian-meals-on-rustic-background-top-view-place-for-text-asian-food-concept-1125066479.jpg");
   background-color: rgb(0, 0, 0, 0.2);
   background-size: cover;
@@ -134,4 +135,81 @@ table img {
   padding: 5px;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
+}
+
+.restaurant-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.restaurant-wrapper {
+  width: 45%;
+  background-color: black;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.restaurant-wrapper .heading-wrapper,
+.restaurant-wrapper .address-wrapper {
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.restaurant-wrapper h5 {
+  margin-left: 50px;
+}
+
+.restaurant-wrapper .address {
+  margin-left: 8px;
+}
+
+.restaurant-page-banner h1 {
+  font-size: 65px;
+}
+
+.detail-wrapper {
+  display: flex;
+  background-color: black;
+  color: white;
+}
+
+.detail-wrapper h4 {
+  width: 50%;
+}
+
+.food-item-wrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.food-item-wrapper .list-item {
+  color: black;
+  border-bottom: 1px solid black;
+  padding: 20px;
+  font-weight: bold;
+  display: flex;
+  text-transform: capitalize;
+}
+
+.food-item-wrapper .list-item button {
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.food-item-wrapper .list-item img {
+  width: 100px;
+  padding-right: 20px;
+}
+
+.food-item-wrapper .list-item .description {
+  font-weight: lighter;
 }
