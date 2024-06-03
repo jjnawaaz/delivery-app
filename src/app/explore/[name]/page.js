@@ -7,6 +7,22 @@ const Page = (props) => {
   const name = props.params.name;
   const [restaurantdetails, setRestaurantDetails] = useState();
   const [foodItems, setFoodItems] = useState([]);
+  const [cartData, setCartData] = useState();
+  const [cartStorage, setCartStorage] = useState(
+    JSON.parse(localStorage.getItem("cart"))
+  );
+
+  const [cartIds, setCartIds] = useState(
+    cartStorage
+      ? () =>
+          cartStorage.map((item) => {
+            return item._id;
+          })
+      : []
+  );
+
+  const [removeCartData, setRemoveCartData] = useState();
+
   useEffect(() => {
     loadRestaurantDetails();
   }, []);
@@ -21,9 +37,24 @@ const Page = (props) => {
     }
   };
 
+  const addToCart = (item) => {
+    setCartData(item);
+    let localCartIds = cartIds;
+    localCartIds.push(item._id);
+    setCartIds(localCartIds);
+    setRemoveCartData();
+  };
+
+  const removeFromCart = (id) => {
+    setRemoveCartData(id);
+    let localIds = cartIds.filter((item) => item != id);
+    setCartData();
+    setCartIds(localIds);
+  };
+
   return (
     <div>
-      <CustomerHeader />
+      <CustomerHeader cartData={cartData} removeCartData={removeCartData} />
       <div className="restaurant-page-banner">
         <h1>{decodeURI(name)}</h1>
       </div>
@@ -43,7 +74,13 @@ const Page = (props) => {
                 <div>{item.name}</div>
                 <div>{item.price}</div>
                 <div className="description">{item.description}</div>
-                <button>Add to Cart</button>
+                {cartIds.includes(item._id) ? (
+                  <button onClick={() => removeFromCart(item._id)}>
+                    Remove From Cart
+                  </button>
+                ) : (
+                  <button onClick={() => addToCart(item)}>Add to Cart</button>
+                )}
               </div>
             </div>
           ))
