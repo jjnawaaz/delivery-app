@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const UserSignUp = () => {
@@ -9,9 +10,22 @@ const UserSignUp = () => {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [mobile, setMobile] = useState("");
-
-  const handleSignUp = () => {
+  const router = useRouter();
+  const handleSignUp = async () => {
     console.log(name, password, cpassword, city, address, mobile);
+    let response = await fetch("http://localhost:3000/api/user", {
+      method: "post",
+      body: JSON.stringify({ name, email, password, city, address, mobile }),
+    });
+    response = await response.json();
+    if (response.success) {
+      const { result } = response;
+      delete result.password;
+      localStorage.setItem("user", JSON.stringify(result));
+      router.push("/");
+    } else {
+      alert("Failed");
+    }
   };
   return (
     <div>
