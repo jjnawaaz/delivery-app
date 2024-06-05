@@ -3,11 +3,13 @@ import { useState } from "react";
 import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
 import { DELIVERY_CHARGES, TAX } from "../lib/constant";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const [cartStorage, setCartStorage] = useState(
     JSON.parse(localStorage.getItem("cart"))
   );
+  const router = useRouter();
   const [total] = useState(() =>
     cartStorage.length == 1
       ? cartStorage[0].price
@@ -16,6 +18,13 @@ const Cart = () => {
         })
   );
   console.log(total);
+  const orderNow = () => {
+    if (JSON.parse(localStorage.getItem("user"))) {
+      router.push("/order");
+    } else {
+      router.push("/user-auth?order=true");
+    }
+  };
   return (
     <div>
       <CustomerHeader />
@@ -64,7 +73,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="block-2">
-          <button>Order Now</button>
+          <button onClick={orderNow}>Order Now</button>
         </div>
       </div>
       <Footer />
