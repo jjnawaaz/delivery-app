@@ -149,8 +149,9 @@ table img {
   background-color: black;
   margin: 10px;
   padding: 10px;
-  border-radius: 25px;
+  border-radius: 15px;
   cursor: pointer;
+  color: white;
 }
 
 .restaurant-wrapper .heading-wrapper,
@@ -158,6 +159,7 @@ table img {
   padding-left: 20px;
   display: flex;
   justify-content: flex-start;
+  font-weight: 300;
 }
 
 .restaurant-wrapper h5 {
@@ -250,4 +252,18 @@ table img {
   color: white;
   border-radius: 20px;
   cursor: pointer;
+}
+
+.auth-container {
+  display: flex;
+}
+
+.login-wrapper,
+.signup-wrapper {
+  height: 400px;
+  border: 1px solid black;
+  margin: 30px;
+  padding: 20px;
+  width: 50%;
+  text-align: center;
 }

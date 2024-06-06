@@ -46,7 +46,6 @@ export default function Home() {
     setShowLocation(false);
     loadRestaurants({ location: item });
   };
-  console.log(restaurants);
   return (
     <main>
       <CustomerHeader />

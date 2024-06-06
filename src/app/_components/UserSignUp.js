@@ -12,7 +12,6 @@ const UserSignUp = (props) => {
   const [mobile, setMobile] = useState("");
   const router = useRouter();
   const handleSignUp = async () => {
-    console.log(name, password, cpassword, city, address, mobile);
     let response = await fetch("http://localhost:3000/api/user", {
       method: "post",
       body: JSON.stringify({ name, email, password, city, address, mobile }),
