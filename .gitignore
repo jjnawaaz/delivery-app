@@ -5,7 +5,11 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-/.env
+
+
+# local environment files
+.env
+.env*.local
 
 # testing
 /coverage
